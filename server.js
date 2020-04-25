@@ -34,6 +34,14 @@ app.get("/api/notes", (req, res) => {
     })
 
 })
+app.get("/", (req, res) => {
+    fs.readFile(path.join(__dirname, "./public/index.html"), function (err, data) {
+        if (err) throw err;
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.end(data);
+
+    })
+})
 
 //   * GET `*` - Should return the `index.html` file
 app.get("*", (req, res) => {
